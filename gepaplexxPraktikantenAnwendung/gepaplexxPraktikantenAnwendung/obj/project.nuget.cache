@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "py5CP45VjBgbSXh/gCqV28pMYLertjgriYE3sw8u8zzmwMDOfBNioCWQKnv2Bpy7qF7XVQj00hyVpA3qMDRSkw==",
+  "dgSpecHash": "th2BEHSUE86S90FQKypHwZ32P5uTVJkGx+8ta22cpzDcp/AM4PcDTf74DT6QWGFXZNqtdM9cWonDuip6S4ilZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nico Strassgschwandt\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung.csproj",
+  "projectFilePath": "C:\\Users\\Jaroslav Romashchuk\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Nico Strassgschwandt\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.14\\microsoft.visualstudio.azure.containers.tools.targets.1.10.14.nupkg.sha512"
+    "C:\\Users\\Jaroslav Romashchuk\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.14\\microsoft.visualstudio.azure.containers.tools.targets.1.10.14.nupkg.sha512"
   ],
   "logs": []
 }
