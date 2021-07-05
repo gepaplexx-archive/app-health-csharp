@@ -6,7 +6,13 @@ namespace gepaplexxPraktikantenAnwendung.v2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Name");
+
+            string InputFromConsole;
+
+            Console.Write("Enter a name:");
+            InputFromConsole = Console.ReadLine();
+
+            
         }
 
         
