@@ -1,6 +1,6 @@
 ﻿using System;
 
-/*private class TestHealthCheckWithArgs : IHealthCheck
+private class TestHealthCheckWithArgs : IHealthCheck
 {
     public TestHealthCheckWithArgs(string s)
     {
@@ -12,7 +12,7 @@
     public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
         CancellationToken cancellationToken = default)
     {
-        
+        services.AddHealthChecks()
+        .AddCheck<ExampleHealthCheck>("example_health_check");
     }
 }
-*/

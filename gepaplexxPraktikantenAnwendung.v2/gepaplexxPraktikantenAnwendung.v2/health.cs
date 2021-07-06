@@ -2,18 +2,28 @@
 
 public class BasicStartup
 {
-    public void ConfigureServices(IServiceCollection services)
+    public void ConfigureServices(ServiceCollection services)
     {
-        services.AddHealthChecks();
+        services.AddHealthChecks()
+        .AddCheck("Example", () =>
+        HealthCheckResult.Healthy("Example is OK!"), tags: new[] { "example" });
     }
 
-    public void Configure(IApplicationBuilder app)
+    public void Configure(ApplicationBuilder app)
     {
         app.UseRouting();
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapHealthChecks("/health");
+            endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+            {
+                ResultStatusCodes =
+        {
+            [HealthStatus.Healthy] = StatusCodes.Status200OK,
+            [HealthStatus.Degraded] = StatusCodes.Status200OK,
+            [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+        }
+            });
         });
     }
 }
