@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  gepaplexxpraktikantenanwendung.v3:
-    image: ${DOCKER_REGISTRY-}gepaplexxpraktikantenanwendungv3
-    build:
-      context: .
-      dockerfile: gepaplexxPraktikantenAnwendung.v3/Dockerfile
