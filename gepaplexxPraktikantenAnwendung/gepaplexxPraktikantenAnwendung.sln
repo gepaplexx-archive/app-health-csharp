@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gepaplexxPraktikantenAnwendung", "gepaplexxPraktikantenAnwendung\gepaplexxPraktikantenAnwendung.csproj", "{13BDD3F9-AB8F-4117-B85D-E7C65286ECF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gepaplexxPraktikantenAnwendung", "gepaplexxPraktikantenAnwendung\gepaplexxPraktikantenAnwendung.csproj", "{13BDD3F9-AB8F-4117-B85D-E7C65286ECF7}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3693859E-42F5-4594-B31E-3331FD0BEE2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{13BDD3F9-AB8F-4117-B85D-E7C65286ECF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13BDD3F9-AB8F-4117-B85D-E7C65286ECF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13BDD3F9-AB8F-4117-B85D-E7C65286ECF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3693859E-42F5-4594-B31E-3331FD0BEE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3693859E-42F5-4594-B31E-3331FD0BEE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3693859E-42F5-4594-B31E-3331FD0BEE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3693859E-42F5-4594-B31E-3331FD0BEE2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
