@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Threading.Tasks;
 using Microsoft.Docs.Samples;
 using System.Threading;
@@ -20,6 +15,7 @@ namespace gepaplexxPraktikantenAnwendung.Hello
         {
             _superTaskContext = helloTaskKontex;
         }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             await Task.Delay(10_000, stoppingToken);

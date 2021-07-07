@@ -22,13 +22,13 @@ namespace gepaplexxPraktikantenAnwendung.Hello
             return services.AddSingleton(_helloContext);
         }
 
-        public static IServiceCollection AddHelloTask<H>(this IServiceCollection services)
-            where H : class, IHostedService
+        public static IServiceCollection AddHelloTask<T>(this IServiceCollection services)
+            where T : class, IHostedService
         {
 
             return services
                 .AddHelloTasks() // in case AddStartupTasks() hasn't been called
-                .AddHostedService<H>();
+                .AddHostedService<T>();
         }
 
     }
