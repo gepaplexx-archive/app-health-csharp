@@ -1,3 +1,5 @@
+using gepaplexxPraktikantenAnwendung.Break;
+using gepaplexxPraktikantenAnwendung.ErrorResponse;
 using gepaplexxPraktikantenAnwendung.Health;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +28,8 @@ namespace gepaplexxPraktikantenAnwendung
             services.AddRazorPages();
             services.AddHealthChecks()
             .AddCheck<ExampleHealthCheck>("example_health_check");
+            services.AddStartupTask<BreakStartupTask>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +58,15 @@ namespace gepaplexxPraktikantenAnwendung
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHealthChecks("/health");
+                
+            });
+
+            app.UseMiddleware<ErrorResponseClass>();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("BreakMethode","{Controller=break}/{action=app}/{sec}");
+
             });
 
             app.UseEndpoints(endpoints =>
