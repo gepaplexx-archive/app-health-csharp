@@ -8,7 +8,7 @@ namespace gepaplexxPraktikantenAnwendung.Hello
 {
     public class HelloConroller : Controller
     {
-        public async Task<IActionResult> app(string name)
+        public async Task<IActionResult> appAsync(string name)
         {
 
             Console.WriteLine("Success");
