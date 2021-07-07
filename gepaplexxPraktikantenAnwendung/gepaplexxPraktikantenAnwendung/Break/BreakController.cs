@@ -15,8 +15,6 @@ namespace gepaplexxPraktikantenAnwendung.Break
 
             Console.WriteLine("Success");
             string breakText;
-
-
             
 
             breakText = $"The Application is paused for {sec} seconds";

@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 using Microsoft.Docs.Samples;
 using System.Threading;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using gepaplexxPraktikantenAnwendung.Break;
+using Microsoft.Extensions.Hosting;
 
 namespace gepaplexxPraktikantenAnwendung.Hello
 {
-    public class HelloStartup : Controller
+    public class HelloStartup : BackgroundService, IHostedService
     {
-        public void Configure(IApplicationBuilder app)
+        private readonly HelloTaskKontex _superTaskContext;
+        public HelloStartup(HelloTaskKontex helloTaskKontex)
         {
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute("/hello", "{controller=Hello}/{action=Index}/{name}");
-            });
-
+            _superTaskContext = helloTaskKontex;
         }
-        public IActionResult Details1(string name)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            return ControllerContext.MyDisplayRouteInfo("Hello: ",name);
+            await Task.Delay(10_000, stoppingToken);
+
         }
     }
 }
+
  

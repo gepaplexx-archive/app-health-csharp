@@ -1,6 +1,7 @@
 using gepaplexxPraktikantenAnwendung.Break;
 using gepaplexxPraktikantenAnwendung.ErrorResponse;
 using gepaplexxPraktikantenAnwendung.Health;
+using gepaplexxPraktikantenAnwendung.Hello;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,7 @@ namespace gepaplexxPraktikantenAnwendung
             services.AddHealthChecks()
             .AddCheck<ExampleHealthCheck>("example_health_check");
             services.AddStartupTask<BreakStartupTask>();
+            services.AddHelloTask<HelloStartup>();
 
         }
 
@@ -69,9 +71,11 @@ namespace gepaplexxPraktikantenAnwendung
 
             });
 
+            app.UseMiddleware<ErrorResponseClass>();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("/hello","{controller=Hello}/{action=Index}/{name}");
+                endpoints.MapControllerRoute("HelloMethode","{Controller=hello}/{action=app}/{name}");
             });
         }
     }

@@ -2042,19 +2042,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jaroslav Romashchuk\\.nuget\\packages\\": {}
+    "C:\\Users\\Nico Strassgschwandt\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jaroslav Romashchuk\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung.csproj",
+      "projectUniqueName": "C:\\Users\\Nico Strassgschwandt\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung.csproj",
       "projectName": "gepaplexxPraktikantenAnwendung",
-      "projectPath": "C:\\Users\\Jaroslav Romashchuk\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung.csproj",
-      "packagesPath": "C:\\Users\\Jaroslav Romashchuk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jaroslav Romashchuk\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\obj\\",
+      "projectPath": "C:\\Users\\Nico Strassgschwandt\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung.csproj",
+      "packagesPath": "C:\\Users\\Nico Strassgschwandt\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nico Strassgschwandt\\Documents\\GitHub\\app-health-csharp\\gepaplexxPraktikantenAnwendung\\gepaplexxPraktikantenAnwendung\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jaroslav Romashchuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nico Strassgschwandt\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
