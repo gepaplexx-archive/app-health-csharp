@@ -11,22 +11,14 @@ namespace gepaplexxPraktikantenAnwendung.Hello
 {
     public class HelloStartup : Controller
     {
-        [Route("[controller]/[name?]")]
         public void Configure(IApplicationBuilder app)
         {
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "/hello",
-                    pattern: "{controller=Hello}/{name}");
-            });
-
-            IActionResult Details(string name)
-            {
-                return ControllerContext.MyDisplayRouteInfo(name);
-            }
+            app.UseRouting();         
+            
+        }
+        public IActionResult Details1(string name)
+        {
+            return ControllerContext.MyDisplayRouteInfo(name);
         }
     }
 }
