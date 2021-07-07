@@ -55,6 +55,13 @@ namespace gepaplexxPraktikantenAnwendung
             {
                 endpoints.MapHealthChecks("/health");
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "hello",
+                    pattern: "{controller=Hello}/{name?}");
+            });
         }
     }
 }
