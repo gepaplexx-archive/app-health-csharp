@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gepaplexxPraktikantenAnwendung.Hello
 {
-    public class HelloConroller : Controller
+    public class HelloController : Controller
     {
         public async Task<IActionResult> appAsync(string name)
         {
