@@ -36,29 +36,23 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
         public async Task<IActionResult> breakapp(int sec)
         {
 
-            Console.WriteLine("Success");
+            
             string breakText;
+            AppControllerResources.IsDownOrPaused = true;
 
+            for (int i = 0; i < sec; i++)
+            {
+                
 
-
-            //Timer pauseFor = new Timer();
-            //pauseFor.Interval = sec * 1000;
-            //pauseFor.Start();
+                Thread.Sleep(1000);
+                
+            }
+            AppControllerResources.IsDownOrPaused = false;
 
             breakText = $"The Application is paused for {sec} seconds";
 
-            var response = HttpContext.Response;
-            response.StatusCode = 423;
-            response.Headers["Retry-After"] = "10";
-            await response.WriteAsync("Service Unavailable");
-
-            Thread.Sleep(sec * 1000);
             
-            //pauseFor.Stop();
-
-            //response.StatusCode = 200;
-            //waitFor(sec);
-            //response.StatusCode = 200;
+            
             return Ok(breakText);
         }
 
@@ -71,12 +65,21 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
             return Ok(terminateText);
         }
 
-        public async Task<IActionResult> healthapp(int name)
+        public async Task<IActionResult> healthapp()
         {
+            if (AppControllerResources.IsDownOrPaused == false)
+            {
+                string healthy = "Healthy";
+                return Ok(healthy);
+            }
+            else
+            {
+                string unhealthy = "Unhealthy";
+                return BadRequest(unhealthy);
+            }
+
+
             
-
-
-            return NoContent();
         }
     }
 }

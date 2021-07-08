@@ -15,11 +15,11 @@ namespace gepaplexxPraktikantenAnwendung
 {
     public class Startup
     {
-        public bool IsDownOrPaused { get; set; }
+       
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            IsDownOrPaused = false;
+       
         }
 
         public IConfiguration Configuration { get; }
@@ -57,30 +57,31 @@ namespace gepaplexxPraktikantenAnwendung
                 endpoints.MapRazorPages();
             });
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHealthChecks("/health");                
-            });
-
+            
 
             app.UseEndpoints(endpoints =>
             {
-                IsDownOrPaused = true;
+              
                 endpoints.MapControllerRoute("BreakMethode", "{Controller=App}/{action=breakapp}/{sec}");
 
             });
 
-            if (IsDownOrPaused == false)
-            {
+            
                 app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllerRoute("HelloMethode", "{Controller=App}/{action=helloapp}/{name}");
                 });
-            }
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("TermianteMethode", "{Controller=App}/{action=terminateapp}");
-                IsDownOrPaused = true;
+                
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("TermianteMethode", "{Controller=App}/{action=healthapp}");
+                
             });
         }
     }
