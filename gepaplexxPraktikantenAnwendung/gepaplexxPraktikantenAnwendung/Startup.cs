@@ -71,7 +71,7 @@ namespace gepaplexxPraktikantenAnwendung
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("HelloMethode","{Controller=hello}/{action=app}/{name}");
+                endpoints.MapControllerRoute("HelloMethode", "{Controller=hello}/{action=app}/{name}");
             });
         }
     }
