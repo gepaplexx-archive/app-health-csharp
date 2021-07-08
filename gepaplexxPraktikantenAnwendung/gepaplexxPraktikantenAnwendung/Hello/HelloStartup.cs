@@ -10,15 +10,15 @@ namespace gepaplexxPraktikantenAnwendung.Hello
 {
     public class HelloStartup : BackgroundService, IHostedService
     {
-        private readonly HelloTaskKontex _superTaskContext;
-        public HelloStartup(HelloTaskKontex helloTaskKontex)
+        private readonly HelloTaskContext _superTaskContext;
+        public HelloStartup(HelloTaskContext helloTaskContex)
         {
-            _superTaskContext = helloTaskKontex;
+            _superTaskContext = helloTaskContex;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken Token)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await Task.Delay(10_000, Token);
+            await Task.Delay(10_000, stoppingToken);
 
         }
     }

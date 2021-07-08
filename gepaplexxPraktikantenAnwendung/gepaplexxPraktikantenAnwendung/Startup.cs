@@ -67,10 +67,7 @@ namespace gepaplexxPraktikantenAnwendung
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("BreakMethode","{Controller=break}/{action=app}/{sec}");
-
             });
-
-            app.UseMiddleware<ErrorResponseClass>();
 
             app.UseEndpoints(endpoints =>
             {

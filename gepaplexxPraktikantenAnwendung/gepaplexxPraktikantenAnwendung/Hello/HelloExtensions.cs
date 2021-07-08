@@ -7,13 +7,13 @@ using System.Threading;
 
 namespace gepaplexxPraktikantenAnwendung.Hello
 {
-    public static class HelloExtension
+    public static class HelloExtensions
     {
-        private static readonly HelloTaskKontex _helloContext = new HelloTaskKontex();
+        private static readonly HelloTaskContext _helloContext = new HelloTaskContext();
         public static IServiceCollection AddHelloTasks(this IServiceCollection services)
         {
             // Don't add StartupTaskContext if we've already added it
-            if (services.Any(x => x.ServiceType == typeof(HelloTaskKontex)))
+            if (services.Any(x => x.ServiceType == typeof(HelloTaskContext)))
             {
                 return services;
             }
@@ -21,13 +21,13 @@ namespace gepaplexxPraktikantenAnwendung.Hello
             return services.AddSingleton(_helloContext);
         }
 
-        public static IServiceCollection AddHelloTask<T>(this IServiceCollection services)
-            where T : class, IHostedService
+        public static IServiceCollection AddHelloTask<H>(this IServiceCollection services)
+            where H : class, IHostedService
         {
 
             return services
                 .AddHelloTasks() // in case AddStartupTasks() hasn't been called
-                .AddHostedService<T>();
+                .AddHostedService<H>();
         }
 
     }

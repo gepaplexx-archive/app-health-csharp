@@ -12,10 +12,10 @@ namespace gepaplexxPraktikantenAnwendung.ErrorResponse
     public class ErrorResponseClass : PageModel
     {
         private readonly StartupTaskContext _contextBreak;
-        private readonly HelloTaskKontex _contextHello;
+        private readonly HelloTaskContext _contextHello;
         private readonly RequestDelegate _next;
 
-        public ErrorResponseClass(StartupTaskContext context, HelloTaskKontex context1, RequestDelegate next)
+        public ErrorResponseClass(StartupTaskContext context, HelloTaskContext context1, RequestDelegate next)
         {
             _contextBreak = context;
             _contextHello = context1;
@@ -25,7 +25,7 @@ namespace gepaplexxPraktikantenAnwendung.ErrorResponse
         
         public async Task Invoke(HttpContext httpContext)
         {
-            if (_contextBreak.IsDown && _contextHello.IsHello)
+            if (_contextBreak.IsDown || _contextHello.IsHello)
             {
                 await _next(httpContext);
             }

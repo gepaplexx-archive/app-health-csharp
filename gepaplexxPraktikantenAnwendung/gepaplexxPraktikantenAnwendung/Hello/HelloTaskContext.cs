@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace gepaplexxPraktikantenAnwendung.Hello
 {
-    public class HelloTaskKontex
+    public class HelloTaskContext
     {
         public bool IsHello = false;
     }
