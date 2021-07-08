@@ -16,9 +16,9 @@ namespace gepaplexxPraktikantenAnwendung.Hello
             _superTaskContext = helloTaskKontex;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken Token)
         {
-            await Task.Delay(10_000, stoppingToken);
+            await Task.Delay(10_000, Token);
 
         }
     }

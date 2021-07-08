@@ -25,7 +25,7 @@ namespace gepaplexxPraktikantenAnwendung.ErrorResponse
         
         public async Task Invoke(HttpContext httpContext)
         {
-            if (_contextBreak.IsDown || _contextHello.IsHello)
+            if (_contextBreak.IsDown && _contextHello.IsHello)
             {
                 await _next(httpContext);
             }

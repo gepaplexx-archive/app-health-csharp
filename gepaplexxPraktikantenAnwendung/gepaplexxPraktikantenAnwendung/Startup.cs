@@ -59,8 +59,7 @@ namespace gepaplexxPraktikantenAnwendung
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHealthChecks("/health");
-                
+                endpoints.MapHealthChecks("/health");                
             });
 
             app.UseMiddleware<ErrorResponseClass>();
