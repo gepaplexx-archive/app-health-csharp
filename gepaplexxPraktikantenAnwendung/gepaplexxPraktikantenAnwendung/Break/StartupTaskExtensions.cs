@@ -21,13 +21,13 @@ namespace gepaplexxPraktikantenAnwendung.Break
             return services.AddSingleton(_sharedContext);
         }
 
-        public static IServiceCollection AddStartupTask<T>(this IServiceCollection services)
-            where T : class, IHostedService
+        public static IServiceCollection AddStartupTask<B>(this IServiceCollection services)
+            where B : class, IHostedService
         {
             
             return services
                 .AddStartupTasks() // in case AddStartupTasks() hasn't been called
-                .AddHostedService<T>();
+                .AddHostedService<B>();
         }
     }
 }
