@@ -16,14 +16,14 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
         
         
         
-        public async Task<IActionResult> helloapp(int name)
+        public async Task<IActionResult> helloapp(string vorname)
         {
             if (AppControllerResources.IsDownOrPaused == false) {
-                Console.WriteLine("Success");
-                string helloText;
 
+                string helloText; 
+                    
+                helloText = "Hello: "+ vorname + ".";
 
-                helloText = $"Hello: {name}.";
 
                 return Ok(helloText);
             }
