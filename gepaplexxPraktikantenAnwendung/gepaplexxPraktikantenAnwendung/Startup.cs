@@ -1,6 +1,3 @@
-
-using gepaplexxPraktikantenAnwendung.Health;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,8 +25,7 @@ namespace gepaplexxPraktikantenAnwendung
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddHealthChecks()
-            .AddCheck<ExampleHealthCheck>("example_health_check");
+            
 
 
         }
@@ -66,12 +62,13 @@ namespace gepaplexxPraktikantenAnwendung
 
             });
 
-            
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllerRoute("HelloMethode", "{Controller=App}/{action=helloapp}/{name}");
-                });
-            
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("HellomMthode", "{Controller=App}/{action=helloapp}/{greeting}");
+
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("TermianteMethode", "{Controller=App}/{action=terminateapp}");

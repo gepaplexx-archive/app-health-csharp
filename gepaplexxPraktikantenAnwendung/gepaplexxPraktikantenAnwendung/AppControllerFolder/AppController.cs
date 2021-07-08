@@ -11,19 +11,23 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
 {
     public class AppController: Controller
     {
-        
 
-        
-        
-        
-        public async Task<IActionResult> helloapp(int name)
+
+
+
+
+        public async Task<IActionResult> helloapp(string greeting)
         {
+            if (string.IsNullOrWhiteSpace(greeting) == true)
+            {
+                return Ok("Pleas enter a name");
+            }
             if (AppControllerResources.IsDownOrPaused == false) {
-                Console.WriteLine("Success");
+                
                 string helloText;
 
 
-                helloText = $"Hello: {name}.";
+                helloText = $"Hello{greeting}";
 
                 return Ok(helloText);
             }
@@ -36,7 +40,10 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
         public async Task<IActionResult> breakapp(int sec)
         {
 
-            
+            if (sec <=0)
+            {
+                return BadRequest("Seconds must be higher than 0");
+            }
             string breakText;
             AppControllerResources.IsDownOrPaused = true;
 
