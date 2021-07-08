@@ -1,7 +1,6 @@
-using gepaplexxPraktikantenAnwendung.Break;
-using gepaplexxPraktikantenAnwendung.ErrorResponse;
+
 using gepaplexxPraktikantenAnwendung.Health;
-using gepaplexxPraktikantenAnwendung.Hello;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,9 +15,11 @@ namespace gepaplexxPraktikantenAnwendung
 {
     public class Startup
     {
+        public bool IsDownOrPaused { get; set; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            IsDownOrPaused = false;
         }
 
         public IConfiguration Configuration { get; }
@@ -29,8 +30,7 @@ namespace gepaplexxPraktikantenAnwendung
             services.AddRazorPages();
             services.AddHealthChecks()
             .AddCheck<ExampleHealthCheck>("example_health_check");
-            services.AddStartupTask<BreakStartupTask>();
-            services.AddHelloTask<HelloStartup>();
+
 
         }
 
@@ -62,20 +62,25 @@ namespace gepaplexxPraktikantenAnwendung
                 endpoints.MapHealthChecks("/health");                
             });
 
-            app.UseMiddleware<ErrorResponseClass>();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("BreakMethode","{Controller=break}/{action=app}/{sec}");
+                IsDownOrPaused = true;
+                endpoints.MapControllerRoute("BreakMethode", "{Controller=App}/{action=breakapp}/{sec}");
+
             });
 
+            if (IsDownOrPaused == false)
+            {
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllerRoute("HelloMethode", "{Controller=App}/{action=helloapp}/{name}");
+                });
+            }
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("HelloMethode", "{Controller=hello}/{action=app}/{name}");
-            });
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute("TermianteMethode", "{Controller=terminate}/{action=app}");
+                endpoints.MapControllerRoute("TermianteMethode", "{Controller=App}/{action=terminateapp}");
+                IsDownOrPaused = true;
             });
         }
     }
