@@ -7,6 +7,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
 {
     public static class AppControllerResources
     {
-        public static bool IsDownOrPaused { get; set; } = false;
+        public static bool IsPaused { get; set; } = false;
+        public static bool IsDown{ get; set; } = false;
     }
 }

@@ -19,7 +19,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
         public async Task<IActionResult> helloapp(string greeting)
         {
             
-            if (AppControllerResources.IsDownOrPaused == false) {
+            if (AppControllerResources.IsDown == false && AppControllerResources.IsPaused== false) {
 
                 if (string.IsNullOrWhiteSpace(greeting) == true)
                 {
@@ -32,9 +32,14 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
 
                 return Ok(helloText);
             }
+            else if(AppControllerResources.IsDown == true && AppControllerResources.IsPaused == false)
+            {
+                string breakText = "App is currently down";
+                return BadRequest(breakText);
+            }
             else
             {
-                string breakText = "App is currently down or paused";
+                string breakText = "App is currently paused";
                 return BadRequest(breakText);
             }
         }
@@ -42,34 +47,41 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
         [Route("app/breakapp/{sec}")]
         public async Task<IActionResult> breakapp(int sec)
         {
+            if (AppControllerResources.IsDown == false) {
 
-            if (sec <=0)
-            {
-                return BadRequest("Seconds must be higher than 0");
+                if (sec <= 0)
+                {
+                    return BadRequest("Seconds must be higher than 0");
+                }
+                string breakText;
+                AppControllerResources.IsPaused = true;
+
+                for (int i = 0; i < sec; i++)
+                {
+
+
+                    Thread.Sleep(1000);
+
+                }
+                AppControllerResources.IsPaused = false;
+
+                breakText = $"The Application was paused for {sec} seconds";
+
+
+
+                return Ok(breakText);
             }
-            string breakText;
-            AppControllerResources.IsDownOrPaused = true;
-
-            for (int i = 0; i < sec; i++)
+            else
             {
-                
-
-                Thread.Sleep(1000);
-                
+                return BadRequest("The Application is already terminated");
             }
-            AppControllerResources.IsDownOrPaused = false;
-
-            breakText = $"The Application was paused for {sec} seconds";
-
-            
-            
-            return Ok(breakText);
         }
 
         public IActionResult terminateapp()
         {
             string terminateText = "The Application is now terminated";
-            AppControllerResources.IsDownOrPaused = true;
+            AppControllerResources.IsPaused = false;
+            AppControllerResources.IsDown = true;
 
 
             return Ok(terminateText);
@@ -77,7 +89,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
 
         public async Task<IActionResult> healthapp()
         {
-            if (AppControllerResources.IsDownOrPaused == false)
+            if (AppControllerResources.IsDown == false && AppControllerResources.IsPaused == false)
             {
                 string healthy = "Healthy";
                 return Ok(healthy);
