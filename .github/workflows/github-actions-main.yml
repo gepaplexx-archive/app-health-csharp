@@ -1,10 +1,11 @@
 
-name: CI/CD-Action-GitHub
-on: [push]
+name: GitHub-UnitTest
+on: push
+
 jobs:
-  myjob:
-    runs-on: ubuntu-latest
+  tests:
+    name: Unit Testing
+    runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo Hello, World!!
+      - uses: actions/checkout@v2.1.0
+      - run: dotnet test
