@@ -14,20 +14,21 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
 
 
 
-
-
+        [Route("app/helloapp")]
+        [Route ("app/helloapp/{greeting}")]
         public async Task<IActionResult> helloapp(string greeting)
         {
-            if (string.IsNullOrWhiteSpace(greeting) == true)
-            {
-                return Ok("Pleas enter a name");
-            }
+            
             if (AppControllerResources.IsDownOrPaused == false) {
-                
+
+                if (string.IsNullOrWhiteSpace(greeting) == true)
+                {
+                    return Ok("Pleas enter a name");
+                }
                 string helloText;
 
 
-                helloText = $"Hello{greeting}";
+                helloText = $"Hello {greeting}";
 
                 return Ok(helloText);
             }
@@ -37,6 +38,8 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
                 return BadRequest(breakText);
             }
         }
+        [Route("app/breakapp")]
+        [Route("app/breakapp/{sec}")]
         public async Task<IActionResult> breakapp(int sec)
         {
 
@@ -56,7 +59,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
             }
             AppControllerResources.IsDownOrPaused = false;
 
-            breakText = $"The Application is paused for {sec} seconds";
+            breakText = $"The Application was paused for {sec} seconds";
 
             
             
