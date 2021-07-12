@@ -26,7 +26,7 @@ namespace app_health_csharp_unitTest
         public void HealthValue()
         {
             OkObjectResult expected = new OkObjectResult(200);
-            expected.Value = "Healthy";
+            expected.Value = "Healtehy";
 
             Task<IActionResult> iaresult = appController.healthapp();
             OkObjectResult result = (OkObjectResult)iaresult.Result;
