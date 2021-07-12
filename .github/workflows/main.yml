@@ -16,4 +16,4 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Unit Test
-        run: .\grdlew app-health-csharp-unitTest
+        run: .\gradlew app-health-csharp-unitTest
