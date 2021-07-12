@@ -83,6 +83,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
             AppControllerResources.IsPaused = false;
             AppControllerResources.IsDown = true;
 
+            System.Environment.Exit(1);
 
             return Ok(terminateText);
         }
