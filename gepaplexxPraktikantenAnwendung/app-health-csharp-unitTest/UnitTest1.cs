@@ -37,9 +37,60 @@ namespace app_health_csharp_unitTest
             //private const ObjectResult expected = new ObjectResult(Controller.StatusCode(503, "The Application is already terminated"));
         }
 
+        [TestMethod]
         public void HelloStatusCode()
         {
+            OkObjectResult expected = new OkObjectResult(200);
 
+
+            Task<IActionResult> iaresult = appController.helloapp("Max");
+            OkObjectResult result = (OkObjectResult)iaresult.Result;
+
+
+
+            Assert.AreEqual(expected.StatusCode, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void HelloValue()
+        {
+            OkObjectResult expected = new OkObjectResult(200);
+            expected.Value = "Hello Max";
+
+            Task<IActionResult> iaresult = appController.helloapp("Max");
+            OkObjectResult result = (OkObjectResult)iaresult.Result;
+
+
+
+            Assert.AreEqual(expected.Value, result.Value);
+        }
+
+        [TestMethod]
+        public void breakValue()
+        {
+            OkObjectResult expected = new OkObjectResult(200);
+            expected.Value = "The Application was paused for 2 seconds";
+
+            Task<IActionResult> iaresult = appController.breakapp(2);
+            OkObjectResult result = (OkObjectResult)iaresult.Result;
+
+
+
+            Assert.AreEqual(expected.Value, result.Value);
+        }
+
+        [TestMethod]
+        public void breakStatusCode()
+        {
+            OkObjectResult expected = new OkObjectResult(200);
+            expected.Value = "The Application was paused for 2 seconds";
+
+            Task<IActionResult> iaresult = appController.breakapp(2);
+            OkObjectResult result = (OkObjectResult)iaresult.Result;
+
+
+
+            Assert.AreEqual(expected.StatusCode, result.StatusCode);
         }
     }
 }
