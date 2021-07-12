@@ -17,4 +17,3 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Unit Test
         run: ./gradlew app-health-csharp-unitTest
-        
