@@ -35,12 +35,12 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
             else if(AppControllerResources.IsDown == true && AppControllerResources.IsPaused == false)
             {
                 string breakText = "App is currently down";
-                return BadRequest(breakText);
+                return StatusCode(503,breakText);
             }
             else
             {
                 string breakText = "App is currently paused";
-                return BadRequest(breakText);
+                return StatusCode(503,breakText);
             }
         }
         [Route("app/breakapp")]
@@ -73,7 +73,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
             }
             else
             {
-                return BadRequest("The Application is already terminated");
+                return StatusCode(503,"The Application is already terminated");
             }
         }
 
@@ -97,7 +97,7 @@ namespace gepaplexxPraktikantenAnwendung.AppControllerFolder
             else
             {
                 string unhealthy = "Unhealthy";
-                return BadRequest(unhealthy);
+                return StatusCode(503,unhealthy);
             }
 
 
