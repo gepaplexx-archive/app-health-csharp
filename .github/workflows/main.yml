@@ -22,6 +22,7 @@ jobs:
       run: |
         echo "done!"
     - uses: "marvinpinto/action-automatic-releases@latest"
+    - name: Release Project
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
