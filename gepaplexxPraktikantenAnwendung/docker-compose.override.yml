@@ -1,9 +1,0 @@
-version: '3.4'
-
-services:
-  gepaplexxpraktikantenanwendung:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "51080:80"
-      - "51443:443"
