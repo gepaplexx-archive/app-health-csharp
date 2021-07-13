@@ -5,7 +5,7 @@ on:
         - main
 
 jobs:
-  Explore-GitHub-Actions:
+  UnitTests:
     runs-on: windows-latest
     steps:
       - name: Check out repository code
@@ -14,15 +14,12 @@ jobs:
         run: cd .\app-health-csharp-unitTest && dotnet test  
       - if: ${{ github.app-health-csharp.app-health-csharp-unitTest.conclusion == 'success' }}
         name: testingparty
-        run: dir        
-  build:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag first-image-name:$(date +%s)
+        run: dir    
+
   tagged-release:
     runs-on: windows-latest
+    needs: 
+      - UnitTests
     steps:
     - name: "Build & test"
       run: |
@@ -33,4 +30,12 @@ jobs:
         prerelease: false
         files: |
           LICENSE.txt
-          *.jar
+          *.jar   
+          
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag first-image-name:$(date +%s)
+  
