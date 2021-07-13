@@ -30,7 +30,6 @@ namespace app_health_csharp_unitTest
 
             Task<IActionResult> iaresult = appController.healthapp();
             OkObjectResult result = (OkObjectResult)iaresult.Result;
-            OkObjectResult result = (OkObjectResult)iaresult.Result;
 
 
 
