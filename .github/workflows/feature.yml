@@ -24,7 +24,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: feature/jaroslav
+          branch: feature/test123
           delete-branch: true
 
 
