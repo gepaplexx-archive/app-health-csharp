@@ -14,13 +14,33 @@ jobs:
       - name: Unit Test
         run: cd .\app-health-csharp-unitTest && dotnet test  
    
- 
+  release:
+    name: Release
+    runs-on: [self-hosted, Linux, X64, environment-central]
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Create a new tag
+        uses: phish108/autotag-action@1.1.37
+        id: autotag
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Create a new release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.autotag.outputs.new-tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true  
           
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag first-image-name:$(date +%s)
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag first-image-name:$(date +%s)
        
   
