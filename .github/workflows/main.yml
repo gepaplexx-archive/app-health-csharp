@@ -7,5 +7,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Unit Test
-        run: cd .\app-health-csharp-unitTest && dotnet test
-        
+        run: cd .\app-health-csharp-unitTest && dotnet test  
+      - if: ${{ github.event.app-health-csharp-unitTest.conclusion == 'success' }}
+        name: testingparty
+        run: dir
