@@ -10,4 +10,10 @@ jobs:
         run: cd .\app-health-csharp-unitTest && dotnet test  
       - if: ${{ github.app-health-csharp.app-health-csharp-unitTest.conclusion == 'success' }}
         name: testingparty
-        run: dir
+        run: dir        
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag first-image-name:$(date +%s)
