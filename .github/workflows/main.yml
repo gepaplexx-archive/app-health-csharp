@@ -16,5 +16,5 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Unit Test
-        run: app-health-csharp-unitTest && dotnet test
+        run: cd app-health-csharp-unitTest\app-health-csharp-unitTest && dotnet test
         
