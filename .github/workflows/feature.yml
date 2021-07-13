@@ -1,5 +1,8 @@
 name: GitHub Actions Main
-on: push
+on:
+ push:
+    branches:
+    - feature/*
 jobs:
   UnitTests:
     runs-on: windows-latest
@@ -10,15 +13,18 @@ jobs:
         run: cd .\app-health-csharp-unitTest && dotnet test
         
   mergeMain:
-    name: Merge to main
+    name: Merge to Main and Delete
     runs-on: windows-latest
     needs:
       - UnitTests
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: feature/test123
+          branch: feature/jaroslav
+          delete-branch: true
+
+
