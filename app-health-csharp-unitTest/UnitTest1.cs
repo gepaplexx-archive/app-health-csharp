@@ -33,7 +33,7 @@ namespace app_health_csharp_unitTest
             //these are some changes to test the main merge
             OkObjectResult result12 = (OkObjectResult)iaresult.Result;
             OkObjectResult result1212 = (OkObjectResult)iaresult.Result;
-            OkObjectResult result122312 = (OkObjectResult)iaresult.Result;
+            OkObjectResult result1222312 = (OkObjectResult)iaresult.Result;
 
             Assert.AreEqual(expected.Value, result.Value);
             //private const ObjectResult expected = new ObjectResult(Controller.StatusCode(503, "The Application is already terminated"));
