@@ -2,7 +2,7 @@ name: GitHub Actions Main
 on: 
   push:
     tags:
-       - '*' 
+       - v.1** 
     branches: 
        - main
 
