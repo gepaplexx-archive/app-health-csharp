@@ -24,7 +24,7 @@ jobs:
         id: cpr
         uses: everlytic/branch-merge@1.1.2
         with:
-          target_branch: feature/test123
+          target_branch: main
             
 
   DeleteRemoteFeature:
@@ -37,7 +37,7 @@ jobs:
       - name: switch to 
         uses: actions/checkout@v2
         with:
-          ref: feature/test123
+          ref: main
       - name: delete the Remote Feature
         id: cpr
         uses: peter-evans/create-pull-request@v3
