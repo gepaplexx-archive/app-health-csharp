@@ -19,10 +19,8 @@ jobs:
       - UnitTests
     steps:
       - name: switch to the main branch
-        uses: actions/checkout@v2
-        with: 
-         fetch-depth: 0
-        run: git checkout feature/test123
+        
+        run: cd .\app-health-csharp-unitTest && git checkout feature/test123
 
       - name: Create Pull Request
         id: cpr
