@@ -29,12 +29,12 @@ jobs:
         id: autotag
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          commit: true
         continue-on-error: true
 
       - name: Create a new release
         uses: ncipollo/release-action@v1
         with:
+          release-branch: true
           tag: ${{ steps.autotag.inputs.new-tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true  
