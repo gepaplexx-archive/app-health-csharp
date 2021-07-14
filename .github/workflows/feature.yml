@@ -18,8 +18,9 @@ jobs:
     needs:
       - UnitTests
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - name: switch to the main branch
-        
         run: cd .\app-health-csharp-unitTest && git checkout feature/test123
 
       - name: Create Pull Request
