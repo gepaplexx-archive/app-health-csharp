@@ -18,7 +18,10 @@ jobs:
     needs:
       - UnitTests
     steps:
-      - uses: actions/checkout@feature/test123
+      - uses: actions/checkout@v2
+
+      - name: switch to the main branch
+        run: git checkout feature/test123
 
       - name: Create Pull Request
         id: cpr
