@@ -34,7 +34,7 @@ jobs:
       - name: Create a new release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.autotag.outputs.new-tag }}
+          tag: ${{ steps.autotag.inputs.new-tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true  
           
