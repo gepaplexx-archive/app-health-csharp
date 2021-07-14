@@ -24,7 +24,7 @@ jobs:
         id: cpr
         uses: everlytic/branch-merge@1.1.2
         with:
-          target_branch: 'feature/test123'
+          target_branch: feature/test123
             
 
   DeleteRemoteFeature:
@@ -33,7 +33,6 @@ jobs:
     needs:
       - mergeMain
     steps:
-      
       - name: delete the Remote Feature
         id: cpr
         uses: peter-evans/create-pull-request@v3
