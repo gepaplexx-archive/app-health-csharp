@@ -18,10 +18,10 @@ jobs:
     needs:
       - UnitTests
     steps:
-      - name: Check out repository code
+      - name: Switch to main branch
         uses: actions/checkout@v2
-      - name: switch to the main branch
-        run: cd .\app-health-csharp-unitTest && git checkout feature/test123
+        with:
+          ref: feature/test123
 
       - name: Create Pull Request
         id: cpr
