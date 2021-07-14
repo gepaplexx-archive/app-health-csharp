@@ -18,9 +18,10 @@ jobs:
     needs:
       - UnitTests
     steps:
-      - uses: actions/checkout@v2
-
       - name: switch to the main branch
+        uses: actions/checkout@v2
+        with: 
+         fetch-depth: 0
         run: git checkout feature/test123
 
       - name: Create Pull Request
