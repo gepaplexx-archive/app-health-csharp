@@ -31,7 +31,7 @@ jobs:
     name: Delete the Remote Feature
     runs-on: windows-latest
     needs:
-      - UnitTests
+      - mergeMain
     steps:
       
       - name: delete the Remote Feature
