@@ -11,24 +11,35 @@ jobs:
         uses: actions/checkout@v2
       - name: Unit Test
         run: cd .\app-health-csharp-unitTest && dotnet test
-        
+
   mergeMain:
     name: Merge to Main and Delete
     runs-on: windows-latest
     needs:
       - UnitTests
     steps:
-      - name: Switch to main branch
-        uses: actions/checkout@v2
-        with:
-          ref: feature/test123
+      - uses: actions/checkout@v2
 
-      - name: Create Pull Request
+      - name: merge to main
+        id: cpr
+        uses: everlytic/branch-merge@1.1.2
+        with:
+          target_branch: 'feature/test123'
+            
+
+  DeleteRemoteFeature:
+    name: Delete the Remote Feature
+    runs-on: windows-latest
+    needs:
+      - UnitTests
+    steps:
+      
+      - name: delete the Remote Feature
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           branch: feature/jaroslav
           delete-branch: true
-         
+        
 
 
