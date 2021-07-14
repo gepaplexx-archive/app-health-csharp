@@ -31,7 +31,6 @@ namespace app_health_csharp_unitTest
             Task<IActionResult> iaresult = appController.healthapp();
             OkObjectResult result = (OkObjectResult)iaresult.Result;
             //these are some changes to test the main merge
-            OkObjectResult result12 = (OkObjectResult)iaresult.Result;
 
             Assert.AreEqual(expected.Value, result.Value);
             //private const ObjectResult expected = new ObjectResult(Controller.StatusCode(503, "The Application is already terminated"));
