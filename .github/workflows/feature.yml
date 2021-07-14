@@ -35,7 +35,7 @@ jobs:
       - mergeMain
     steps:
       - name: switch to 
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
         with:
           ref: feature/test123
       - name: delete the Remote Feature
