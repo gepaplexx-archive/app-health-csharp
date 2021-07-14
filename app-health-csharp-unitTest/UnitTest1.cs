@@ -58,7 +58,7 @@ namespace app_health_csharp_unitTest
             OkObjectResult expected = new OkObjectResult(200);
             expected.Value = "Hello Max";
 
-            Task<IActionResult> iaresult = appController.helloapp("test");
+            Task<IActionResult> iaresult = appController.helloapp("Max");
             OkObjectResult result = (OkObjectResult)iaresult.Result;
 
 
