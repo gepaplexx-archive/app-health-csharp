@@ -22,9 +22,9 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: everlytic/branch-merge@1.1.2
         with:
-          target_branch: "feature/test123"
+          target_branch: 'feature/test123'
           branch: feature/Jaroslav
           delete-branch: true
           
