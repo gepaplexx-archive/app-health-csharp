@@ -29,10 +29,15 @@ jobs:
 
   DeleteRemoteFeature:
     name: Delete the Remote Feature
+    
     runs-on: windows-latest
     needs:
       - mergeMain
     steps:
+      - name: switch to 
+        uses: action/checkout@v2
+        with:
+          ref: feature/test123
       - name: delete the Remote Feature
         id: cpr
         uses: peter-evans/create-pull-request@v3
