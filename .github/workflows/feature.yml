@@ -22,9 +22,9 @@ jobs:
 
       - name: merge to main
         id: cpr
-        uses: everlytic/branch-merge@1.1.2
+        uses: peter-evans/create-pull-request@v3
         with:
-          target_branch: main
+          branch: main
             
 
   DeleteRemoteFeature:
