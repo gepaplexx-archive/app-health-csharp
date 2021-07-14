@@ -38,9 +38,9 @@ jobs:
           
   build:
     runs-on: windows-latest
-    steps:
     needs: 
         - release
+    steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
         run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag image-name:$(date +%s)
