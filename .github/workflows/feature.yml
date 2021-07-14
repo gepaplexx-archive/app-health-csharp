@@ -18,13 +18,12 @@ jobs:
     needs:
       - UnitTests
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@feature/test123
 
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          ref: feature/test123
           branch: feature/jaroslav
           delete-branch: true
          
