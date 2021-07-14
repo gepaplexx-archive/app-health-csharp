@@ -1,0 +1,50 @@
+name: GitHub Actions Main
+on: 
+  push:
+    tags:
+       - v.1** 
+    branches: 
+       - main
+
+jobs:
+  UnitTests:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Unit Test
+        run: cd .\app-health-csharp-unitTest && dotnet test  
+   
+  release:
+    name: Release
+    runs-on: windows-latest
+    needs: 
+        - UnitTests
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Create a new tag
+        uses: phish108/autotag-action@1.1.37
+        id: autotag
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Create a new release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.autotag.outputs.new-tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true  
+          
+  build:
+    runs-on: windows-latest
+    needs: 
+        - release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag image-name:$(date +%s)
+        
+  
