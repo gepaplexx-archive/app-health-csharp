@@ -10,7 +10,7 @@ COPY ["gepaplexxPraktikantenAnwendung.csproj", "gepaplexxPraktikantenAnwendung/"
 RUN dotnet restore "gepaplexxPraktikantenAnwendung/gepaplexxPraktikantenAnwendung.csproj"
 COPY . .
 WORKDIR "/src/gepaplexxPraktikantenAnwendung"
-RUN dotnet build "gepaplexxPraktikantenAnwendung.csproj" -c Release -o /app/build
+RUN dotnet build "gepaplexxPraktikantenAnwendung/gepaplexxPraktikantenAnwendung.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "gepaplexxPraktikantenAnwendung.csproj" -c Release -o /app/publish
