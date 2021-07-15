@@ -1,4 +1,4 @@
-name: GitHub Action Main x
+name: GitHub Actions M@in
 on: 
   push:
     tags:
@@ -37,39 +37,14 @@ jobs:
           tag: ${{ steps.autotag.outputs.new-tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true  
-
-  buildx:
-    runs-on: windows-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        uses: docker/setup-buildx-action@v1
-        id: buildx
-        with:
-          install: true
-      -
-        name: Build
-        run: |
-          docker build . # will run buildx
           
   build:
     runs-on: windows-latest
     needs: 
         - release
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        id: buildx
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-    
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag image-tag:${{ steps.meta.outputs.tags }}
         
   
