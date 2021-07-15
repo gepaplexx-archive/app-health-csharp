@@ -1,4 +1,4 @@
-name: GitHub Actions Main 2
+name: GitHub Actions Main
 on: 
   push:
     tags:
