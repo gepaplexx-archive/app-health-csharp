@@ -1,4 +1,4 @@
-name: GitHub Action Main new Release
+name: GitHub Actions Main 2
 on: 
   push:
     tags:
@@ -44,7 +44,7 @@ jobs:
         - release
     steps:
       - uses: actions/checkout@v2
-      - name: Build the Docker image        
-        run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag image-tag:${{ steps.autotag.outputs.new-tag }}
+      - name: Build the Docker image
+        run: docker build . --file ./gepaplexxPraktikantenAnwendung/Dockerfile --tag image-tag:$(%date +s%)
         
   
