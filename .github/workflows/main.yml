@@ -49,7 +49,7 @@ jobs:
         
   notifyFail:
     name: "Notify Slack Channel #fail"
-    runs-on: [self-hosted, Linux, X64, environment-central]
+    runs-on: windows-latest
     if: ${{ failure() }}
     needs:
       - UnitTests
