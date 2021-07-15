@@ -1,4 +1,4 @@
-name: GitHub Action Main
+name: GitHub Action Main new Release
 on: 
   push:
     tags:
