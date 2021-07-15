@@ -6,11 +6,11 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["gepaplexxPraktikantenAnwendung.csproj", "gepaplexxPraktikantenAnwendung/"]
-RUN dotnet restore "gepaplexxPraktikantenAnwendung/gepaplexxPraktikantenAnwendung.csproj"
+COPY ["gepaplexxPraktikantenAnwendung.csproj", "gepaplexxPraktikantenAnwendung.csproj"]
+RUN dotnet restore "gepaplexxPraktikantenAnwendung.csproj"
 COPY . .
-WORKDIR "/src/gepaplexxPraktikantenAnwendung"
-RUN dotnet build "gepaplexxPraktikantenAnwendung/gepaplexxPraktikantenAnwendung.csproj" -c Release -o /app/build
+#WORKDIR "/src/gepaplexxPraktikantenAnwendung"
+RUN dotnet build "gepaplexxPraktikantenAnwendung.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "gepaplexxPraktikantenAnwendung.csproj" -c Release -o /app/publish
