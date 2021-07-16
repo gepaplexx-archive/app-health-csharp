@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: $0.0.1
+  IMAGE_NAME: 1
 
 jobs: 
    build-and-push-image:
