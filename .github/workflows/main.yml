@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{github.repository}}:main
+  IMAGE_NAME: ${{github.repository}}
 
 jobs:
   UnitTests:
@@ -69,6 +69,7 @@ jobs:
           flavor: |
             latest=true
           tags: |
+            type=ref,event=branch
             type=semver,pattern={{raw}}
 
       - name: Build and push Docker image
