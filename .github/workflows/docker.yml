@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.gepaplexx.health-app-csharp }}
+  IMAGE_NAME: ${{ github.repository/tags }}
 
 jobs: 
    build-and-push-image:
