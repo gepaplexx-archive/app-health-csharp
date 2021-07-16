@@ -6,6 +6,10 @@ on:
     branches: 
        - main
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: gepaplexx/app-health-csharp
+
 jobs:
   UnitTests:
     runs-on: windows-latest
@@ -40,9 +44,8 @@ jobs:
           
   build-and-push-image:
     runs-on: ubuntu-latest
-    needs: 
+    needs:
         - release
-    
     permissions:
       contents: read
       packages: write
@@ -50,6 +53,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1" 
+        with:
+           fallback: 0.1.0
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -62,24 +78,28 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}{{raw}}
+          flavor: |
+            latest=true
+          tags: |
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: ./gepaplexxPraktikantenAnwendung
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}{{raw}}
           labels: ${{ steps.meta.outputs.labels }}
         
   notifyFail:
     name: "Notify Slack Channel #fail"
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs:
       - UnitTests
       - release
-      - build
+      - build-and-push-image
     steps:
       - name: Google Chat Notification
         uses: Co-qn/google-chat-notification@releases/v1
