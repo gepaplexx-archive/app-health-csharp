@@ -7,6 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  Versio_NR: 0.0.1
 
 jobs: 
   build-and-push-image:
@@ -41,7 +42,7 @@ jobs:
         with:
           context: ./gepaplexxPraktikantenAnwendung
           push: true
-          tags: ${{ steps.get_version.outputs.VERSION }}
+          tags: ${{ Versio_NR }}
           labels: ${{ steps.meta.outputs.labels }}
 
       
