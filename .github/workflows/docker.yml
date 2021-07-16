@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository/tags }}
+  IMAGE_NAME: ${{ github.repository.outputs.tags }}
 
 jobs: 
    build-and-push-image:
