@@ -77,8 +77,7 @@ jobs:
     if: ${{ failure() }}
     needs:
       - UnitTests
-      - release
-      - build-and-push-image
+      - release-build-and-push
     steps:
       - name: Google Chat Notification
         uses: Co-qn/google-chat-notification@releases/v1
