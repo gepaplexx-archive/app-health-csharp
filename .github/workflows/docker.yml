@@ -37,6 +37,6 @@ jobs:
         with:
           context: ./gepaplexxPraktikantenAnwendung
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: hello
           labels: ${{ steps.meta.outputs.labels }}
 
