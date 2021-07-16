@@ -42,7 +42,7 @@ jobs:
         with:
           context: ./gepaplexxPraktikantenAnwendung
           push: true
-          tags: 0.0.1
+          tags: '0.0.1'
           labels: ${{ steps.meta.outputs.labels }}
 
       
