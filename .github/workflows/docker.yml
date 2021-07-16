@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs: 
-  build-and-push-image:
+   build-and-push-image:
     runs-on: ubuntu-latest
     needs:
         - release
@@ -41,8 +41,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-          
-
-      
 
