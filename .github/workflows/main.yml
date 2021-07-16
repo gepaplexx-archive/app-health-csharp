@@ -72,7 +72,7 @@ jobs:
         with:
           context: ./gepaplexxPraktikantenAnwendung
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.autotag.outputs.new-tag }}
           labels: ${{ steps.meta.outputs.labels }}
         
   notifyFail:
