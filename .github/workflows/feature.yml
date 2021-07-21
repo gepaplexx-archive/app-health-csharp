@@ -2,7 +2,7 @@ name: GitHub Actions Main
 on:
  push:
     branches:
-    - feature/*
+    - feature/test
 jobs:
   UnitTests:
     runs-on: windows-latest
