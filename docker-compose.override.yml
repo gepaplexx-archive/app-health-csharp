@@ -6,4 +6,3 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "51080:80"
-      - "51443:443"
