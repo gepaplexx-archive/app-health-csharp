@@ -42,6 +42,7 @@ namespace gepaplexxPraktikantenAnwendung
                 app.UseExceptionHandler("/Error");
             }
 
+            
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -80,6 +81,7 @@ namespace gepaplexxPraktikantenAnwendung
                 endpoints.MapControllerRoute("TermianteMethode", "{Controller=App}/{action=healthapp}");
                 
             });
+
         }
     }
 }
