@@ -4,11 +4,11 @@ metadata:
   name: app-health-csharp
 
   labels:
-    run: app-health-csharp
+    {{- include "myChart.selectorLabels" . | nindent 4 }}
 
 spec:
   ports:
-  - port: 80
+  - port: 8080
     protocol: TCP
   selector:
-    run: app-health-csharp
+    {{- include "myChart.selectorLabels" . | nindent 4 }}
