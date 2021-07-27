@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-ghcr.io/gepaplexx/app-health-csharp
+  name: app-health-csharp
 
   labels:
-    run: my-ghcr.io/gepaplexx/app-health-csharp
+    run: app-health-csharp
 
 spec:
   ports:
   - port: 80
     protocol: TCP
   selector:
-    run: my-ghcr.io/gepaplexx/app-health-csharp
+    run: app-health-csharp

@@ -1,39 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-myservicea
+  name: ingress-app-health-csharp
   annotations:
     # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: myservicea.foo.org
+  - host: app-health-csharp.apps.play.gepaplexx.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: myservicea
-            port:
-              number: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-myserviceb
-  annotations:
-    # use the shared ingress-nginx
-    kubernetes.io/ingress.class: "nginx"
-spec:
-  rules:
-  - host: myserviceb.foo.org
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: myserviceb
+            name: app-health-csharp
             port:
               number: 80
